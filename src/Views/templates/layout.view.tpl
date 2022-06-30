@@ -32,6 +32,7 @@
         <li><a href="index.php?page=NW202202_PrimerForm"><i class="fas fa-user-plus"></i>&nbsp;Primer Form</a></li>
         <li><a href="index.php?page=Mnt_Productos"><i class="fas fa-user-plus"></i>&nbsp;Productos</a></li>
         <li><a href="index.php?page=Mnt_Scores"><i class="fas fa-user-plus"></i>&nbsp;Scores</a></li>
+        <li><a href="index.php?page=Mnt_Carritos"><i class="fas fa-user-plus"></i>&nbsp;Carrito</a></li>
       </ul>
     </nav>
   </header>

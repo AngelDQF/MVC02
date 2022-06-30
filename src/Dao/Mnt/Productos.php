@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PHP Version 7
  * Modelo de Datos para modelo
@@ -30,15 +31,17 @@ use Dao\Table;
 class Productos extends Table
 {
     /*
-        `invPrdId` bigint(13) NOT NULL AUTO_INCREMENT,
-        `invPrdBrCod` varchar(128) DEFAULT NULL,
-        `invPrdCodInt` varchar(128) DEFAULT NULL,
-        `invPrdDsc` varchar(128) DEFAULT NULL,
-        `invPrdTip` char(3) DEFAULT NULL,
-        `invPrdEst` char(3) DEFAULT NULL,
-        `invPrdPadre` bigint(13) DEFAULT NULL,
-        `invPrdFactor` int(11) DEFAULT NULL,
-        `invPrdVnd` char(3) DEFAULT NULL,
+        invPrdId bigint AI PK 
+        invPrdBrCod varchar(128) 
+        invPrdCodInt varchar(128) 
+        invPrdDsc varchar(128) 
+        invPrdTip char(3) 
+        invPrdEst char(3) 
+        invPrdPadre bigint 
+        invPrdFactor int 
+        invPrdVnd char(3) 
+        invPrdPrecioVenta decimal(9,2) 
+        invPrdPrecioCompra decimal(9,2)
     */
     /**
      * Obtiene todos los registros de Productos
@@ -86,26 +89,41 @@ class Productos extends Table
         $invPrdEst,
         $invPrdPadre,
         $invPrdFactor,
-        $invPrdVnd
+        $invPrdVnd,
+        $invPrdPrecioVenta,
+        $invPrdPrecioCompra,
+        $invPrdStock
     ) {
+
         $sqlstr = "INSERT INTO `productos`
-(`invPrdBrCod`, `invPrdCodInt`,
-`invPrdDsc`, `invPrdTip`, `invPrdEst`,
-`invPrdPadre`, `invPrdFactor`, `invPrdVnd`)
+(`invPrdBrCod`,
+`invPrdCodInt`,
+`invPrdDsc`,
+`invPrdTip`,
+`invPrdEst`,
+`invPrdPadre`,
+`invPrdFactor`,
+`invPrdVnd`,
+`invPrdPrecioVenta`,
+`invPrdPrecioCompra`,
+`invPrdStock`)
 VALUES
 (:invPrdBrCod, :invPrdCodInt,
 :invPrdDsc, :invPrdTip, :invPrdEst,
-:invPrdPadre, :invPrdFactor, :invPrdVnd);
+:invPrdPadre, :invPrdFactor, :invPrdVnd, :invPrdPrecioVenta, :invPrdPrecioCompra, :invPrdStock);
 ";
         $sqlParams = [
-            "invPrdBrCod" => $invPrdBrCod ,
-            "invPrdCodInt" => $invPrdCodInt ,
-            "invPrdDsc" => $invPrdDsc ,
-            "invPrdTip" => $invPrdTip ,
-            "invPrdEst" => $invPrdEst ,
-            "invPrdPadre" => $invPrdPadre ,
-            "invPrdFactor" =>  $invPrdFactor ,
-            "invPrdVnd" => $invPrdVnd
+            "invPrdBrCod" => $invPrdBrCod,
+            "invPrdCodInt" => $invPrdCodInt,
+            "invPrdDsc" => $invPrdDsc,
+            "invPrdTip" => $invPrdTip,
+            "invPrdEst" => $invPrdEst,
+            "invPrdPadre" => $invPrdPadre,
+            "invPrdFactor" =>  $invPrdFactor,
+            "invPrdVnd" => $invPrdVnd,
+            "invPrdPrecioVenta" => $invPrdPrecioVenta,
+            "invPrdPrecioCompra" => $invPrdPrecioCompra,
+            "invPrdStock" => $invPrdStock
         ];
         return self::executeNonQuery($sqlstr, $sqlParams);
     }
@@ -133,12 +151,16 @@ VALUES
         $invPrdPadre,
         $invPrdFactor,
         $invPrdVnd,
+        $invPrdPrecioVenta,
+        $invPrdPrecioCompra,
+        $invPrdStock,
         $invPrdId
     ) {
         $sqlstr = "UPDATE `productos` set
 `invPrdBrCod`=:invPrdBrCod, `invPrdCodInt`=:invPrdCodInt,
 `invPrdDsc`=:invPrdDsc, `invPrdTip`=:invPrdTip, `invPrdEst`=:invPrdEst,
-`invPrdPadre`=:invPrdPadre, `invPrdFactor`=:invPrdFactor, `invPrdVnd`=:invPrdVnd
+`invPrdPadre`=:invPrdPadre, `invPrdFactor`=:invPrdFactor, `invPrdVnd`=:invPrdVnd, 
+`invPrdPrecioVenta`=:invPrdPrecioVenta,`invPrdPrecioCompra`=:invPrdPrecioCompra,`invPrdStock` = :invPrdStock
  where `invPrdId` = :invPrdId;";
         $sqlParams = array(
             "invPrdBrCod" => $invPrdBrCod,
@@ -149,6 +171,9 @@ VALUES
             "invPrdPadre" => $invPrdPadre,
             "invPrdFactor" => $invPrdFactor,
             "invPrdVnd" => $invPrdVnd,
+            "invPrdPrecioVenta" => $invPrdPrecioVenta,
+            "invPrdPrecioCompra" => $invPrdPrecioCompra,
+            "invPrdStock" => $invPrdStock,
             "invPrdId" => $invPrdId
         );
         return self::executeNonQuery($sqlstr, $sqlParams);
@@ -169,5 +194,4 @@ VALUES
         );
         return self::executeNonQuery($sqlstr, $sqlParams);
     }
-
 }

@@ -11,6 +11,9 @@
         <th>Tipo</th>
         <th>Estado</th>
         <th>Vendible</th>
+        <th>Precio Venta</th>
+        <th>En Stok</th>
+
         <th><a href="index.php?page=Mnt-Producto&mode=INS">Nuevo</a></th>
       </tr>
     </thead>
@@ -22,6 +25,9 @@
         <td>{{invPrdTip}}</td>
         <td>{{invPrdEst}}</td>
         <td>{{invPrdVnd}}</td>
+        <td>{{invPrdPrecioVenta}}</td>
+        <td>{{invPrdStock}}</td>
+
         <td>
           <a href="index.php?page=Mnt-Producto&mode=UPD&id={{invPrdId}}">Editar</a>
           &NonBreakingSpace;
@@ -32,3 +38,4 @@
     </tbody>
   </table>
 </section>
+<!-- -->
